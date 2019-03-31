@@ -3,7 +3,7 @@ package test.auto.hw1;
 import com.epam.tat.module4.Calculator;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
+// TODO А зачем импорт из junit?
 import static org.junit.Assert.assertEquals;
 
 public class SubTest {
