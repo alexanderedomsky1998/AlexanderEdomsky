@@ -22,7 +22,7 @@ public class AddMantisUserTest {
     @BeforeClass
     public void setUps()
     {
-        System.setProperty("webdriver.chrome.driver", "C:\\WebDrivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\webdriver\\chrome\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
