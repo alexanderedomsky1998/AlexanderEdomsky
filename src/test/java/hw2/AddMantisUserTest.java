@@ -12,6 +12,11 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
+/* TODO
+        1. Неиспользуемые импроты
+        2. Не все методы названы по Java Code Convention
+        3. Локаторы автосгенерированные
+ */
 public class AddMantisUserTest {
     private WebDriver driver;
     private WebElement createNewAccountBtn;
@@ -84,6 +89,7 @@ public class AddMantisUserTest {
         WebElement accessLevel = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[6]/td[1]"));
         WebElement enabled = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[7]/td[1]"));
         WebElement Protected = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[8]/td[1]"));
+        // TODO Лучше использовать softAssert. Проверка каждого поля это отдельный assert
         assertTrue(userName.isEnabled() && realName.isEnabled() && email.isEnabled() &&
                 password.isEnabled() && verifyPassword.isEnabled() && accessLevel.isEnabled() &&
                 enabled.isEnabled() && Protected.isEnabled());
