@@ -1,17 +1,16 @@
 package hw2;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import org.testng.asserts.SoftAssert;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.io.IOException;
 /* TODO
         1. Неиспользуемые импроты
         2. Не все методы названы по Java Code Convention
@@ -44,31 +43,32 @@ public class AddMantisUserTest {
     @Test(priority = 2)
     public void performLoginAndAssertUserName() {
 
+
         WebElement enterButton = driver.findElement(By.id("username"));
         enterButton.sendKeys("administrator");
 
-        enterButton = driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[2]"));
+        enterButton = driver.findElement(By.xpath("//input[@value='Login']"));
         enterButton.click();
 
         enterButton = driver.findElement((By.id("password")));
         enterButton.sendKeys("rootroot");
 
-        enterButton = driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[3]"));
+        enterButton = driver.findElement(By.xpath("//input[@value='Login']"));
         enterButton.click();
         assertEquals(driver.findElement(By.className("user-info")).getText(),
                 "administrator");
     }
 
     @Test(priority = 3)
-    public void AssertLeftSideMenu()
+    public void assertLeftSideMenu()
     {
-        assertTrue(driver.findElement(By.xpath("//*[@id='sidebar']")).isEnabled());
+        assertTrue(driver.findElement(By.id("sidebar")).isEnabled());
     }
 
     @Test(priority = 4)
     public void testManageButton()
     {
-        WebElement manageButton = driver.findElement(By.xpath("//*[@id=\"sidebar\"]/ul/li[7]/a"));
+        WebElement manageButton = driver.findElement(By.xpath("//span[contains(.,'Manage')]"));
         manageButton.click();
 
         WebElement manageUsersButton = driver.findElement(By.xpath("//*[@id=\"main-container\"]/div[2]/div[2]/div/ul/li[2]/a"));
@@ -90,9 +90,19 @@ public class AddMantisUserTest {
         WebElement enabled = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[7]/td[1]"));
         WebElement Protected = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[8]/td[1]"));
         // TODO Лучше использовать softAssert. Проверка каждого поля это отдельный assert
-        assertTrue(userName.isEnabled() && realName.isEnabled() && email.isEnabled() &&
-                password.isEnabled() && verifyPassword.isEnabled() && accessLevel.isEnabled() &&
-                enabled.isEnabled() && Protected.isEnabled());
+
+        SoftAssert asert = new SoftAssert();
+
+        asert.assertTrue(userName.isEnabled());
+        asert.assertTrue(realName.isEnabled());
+        asert.assertTrue(email.isEnabled());
+        asert.assertTrue(password.isEnabled());
+        asert.assertTrue(verifyPassword.isEnabled());
+        asert.assertTrue(accessLevel.isEnabled());
+        asert.assertTrue(enabled.isEnabled());
+        asert.assertTrue(Protected.isEnabled());
+
+        asert.assertAll();
     }
 
     @Test(priority = 6)
@@ -133,7 +143,7 @@ public class AddMantisUserTest {
     }
 
     @Test(priority = 10)
-    public void AssertUserNameAndLogout()
+    public void assertUserNameAndLogout()
     {
         assertEquals(driver.findElement(By.className("user-info")).getText(),
                 username);

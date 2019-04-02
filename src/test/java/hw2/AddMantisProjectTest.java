@@ -1,23 +1,20 @@
 package hw2;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 
-import java.io.File;
-import java.io.IOException;
 
 // TODO Смотри комментарии к классу AddMantisUserTest.class
 public class AddMantisProjectTest {
 
     private WebDriver driver;
     private WebElement manageProjectsButton;
+
     @BeforeClass
     public void setUps()
     {
@@ -41,13 +38,13 @@ public class AddMantisProjectTest {
         WebElement enterButton = driver.findElement(By.id("username"));
         enterButton.sendKeys("administrator");
 
-        enterButton = driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[2]"));
+        enterButton = driver.findElement(By.xpath("//input[@value='Login']"));
         enterButton.click();
 
         enterButton = driver.findElement((By.id("password")));
         enterButton.sendKeys("rootroot");
 
-        enterButton = driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[3]"));
+        enterButton = driver.findElement(By.xpath("//input[@value='Login']"));
         enterButton.click();
         assertEquals(driver.findElement(By.className("user-info")).getText(),
                 "administrator");
@@ -57,7 +54,9 @@ public class AddMantisProjectTest {
     @Test(priority = 3)
     public void AssertLeftSideMenu()
     {
-        assertTrue(driver.findElement(By.xpath("//*[@id='sidebar']")).isEnabled());
+
+        assertTrue(driver.findElement(By.id("sidebar")).isEnabled());
+
     }
 
 
@@ -65,7 +64,7 @@ public class AddMantisProjectTest {
     @Test(priority = 4)
     public void testManageButton()
     {
-        WebElement manageButton = driver.findElement(By.xpath("//*[@id=\"sidebar\"]/ul/li[7]/a"));
+        WebElement manageButton = driver.findElement(By.xpath("//span[contains(.,'Manage')]"));
         manageButton.click();
 
         manageProjectsButton = driver.findElement(By.xpath("//*[@id=\"main-container\"]/div[2]/div[2]/div/ul/li[3]/a"));
@@ -81,8 +80,6 @@ public class AddMantisProjectTest {
 
         WebElement createNewProjectButton = driver.findElement(By.xpath("//*[@id=\"main-container\"]/div[2]/div[2]/div/div/div[2]/div[2]/div/div[1]/form/fieldset/button\n"));
         createNewProjectButton.click();
-        //driver.findElement(By.xpath("//fieldset/button")).click();
-        //driver.findElement(By.xpath("//button[contains(text(),'Create New Project')]")).click();
 
         WebElement projectName = driver.findElement(By.xpath("//*[@id=\"manage-project-create-form\"]/div/div[2]/div/div/table/tbody/tr[1]/td[1]"));
         WebElement status = driver.findElement(By.xpath("//*[@id=\"manage-project-create-form\"]/div/div[2]/div/div/table/tbody/tr[2]/td[1]"));
@@ -90,8 +87,14 @@ public class AddMantisProjectTest {
         WebElement viewStatus = driver.findElement(By.xpath("//*[@id=\"manage-project-create-form\"]/div/div[2]/div/div/table/tbody/tr[4]/td[1]"));
         WebElement description = driver.findElement(By.xpath("//*[@id=\"manage-project-create-form\"]/div/div[2]/div/div/table/tbody/tr[5]/td[1]"));
 
-        assertTrue(projectName.isEnabled() && status.isEnabled() && inhetitGlobalCategories.isEnabled() &&
-                viewStatus.isEnabled() && description.isEnabled());
+        SoftAssert asert = new SoftAssert();
+
+        asert.assertTrue(projectName.isEnabled());
+        asert.assertTrue(status.isEnabled());
+        asert.assertTrue(inhetitGlobalCategories.isEnabled());
+        asert.assertTrue(viewStatus.isEnabled());
+        asert.assertTrue(description.isEnabled());
+        asert.assertAll();
     }
 
     @Test(priority = 6)
