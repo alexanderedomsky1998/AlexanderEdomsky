@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 
+// TODO Смотри комментарии к классу AddMantisUserTest.class
 public class AddMantisProjectTest {
 
     private WebDriver driver;
