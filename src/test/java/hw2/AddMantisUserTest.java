@@ -12,8 +12,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 /* TODO
-        1. Неиспользуемые импроты
-        2. Не все методы названы по Java Code Convention
         3. Локаторы автосгенерированные
  */
 public class AddMantisUserTest {
@@ -89,7 +87,6 @@ public class AddMantisUserTest {
         WebElement accessLevel = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[6]/td[1]"));
         WebElement enabled = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[7]/td[1]"));
         WebElement Protected = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[8]/td[1]"));
-        // TODO Лучше использовать softAssert. Проверка каждого поля это отдельный assert
 
         SoftAssert asert = new SoftAssert();
 
