@@ -3,6 +3,8 @@ package hw3;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+// TODO Для каждой страницы должен быть определён свой PO
+// TODO Прошу исправить в HW4
 public class PageObjectVoid {
 
     private WebDriver driver;
