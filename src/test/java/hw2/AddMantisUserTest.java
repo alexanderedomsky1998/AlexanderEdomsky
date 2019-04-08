@@ -66,12 +66,12 @@ public class AddMantisUserTest {
     @Test(priority = 4)
     public void testManageButton()
     {
-        WebElement manageButton = driver.findElement(By.xpath("//span[contains(.,'Manage')]"));
+        WebElement manageButton = driver.findElement(By.linkText("Manage"));
         manageButton.click();
 
-        WebElement manageUsersButton = driver.findElement(By.xpath("//*[@id=\"main-container\"]/div[2]/div[2]/div/ul/li[2]/a"));
+        WebElement manageUsersButton = driver.findElement(By.linkText("Manage Users"));
         manageUsersButton.click();
-        createNewAccountBtn = driver.findElement(By.xpath("//*[@id=\"manage-user-div\"]/div[1]/a"));
+        createNewAccountBtn = driver.findElement(By.linkText("Create New Account"));
         assertTrue(createNewAccountBtn.isEnabled());
     }
 
@@ -79,14 +79,12 @@ public class AddMantisUserTest {
     public void createNewAccount()
     {
         createNewAccountBtn.click();
-        WebElement userName = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[1]/td[1]"));
-        WebElement realName = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[2]/td[1]"));
-        WebElement email = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[3]/td[1]"));
-        WebElement password = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[4]/td[1]"));
-        WebElement verifyPassword = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[5]/td[1]"));
-        WebElement accessLevel = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[6]/td[1]"));
-        WebElement enabled = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[7]/td[1]"));
-        WebElement Protected = driver.findElement(By.xpath("//*[@id=\"manage-user-create-form\"]/div/div[2]/div/div/table/tbody/tr[8]/td[1]"));
+        WebElement userName = driver.findElement(By.id("user-username"));
+        WebElement realName = driver.findElement(By.id("user-realname"));
+        WebElement email = driver.findElement(By.id("email-field"));
+        WebElement password = driver.findElement(By.id("user=password"));
+        WebElement verifyPassword = driver.findElement(By.id("user-verify-password"));
+        WebElement accessLevel = driver.findElement(By.id("user-access-level"));
 
         SoftAssert asert = new SoftAssert();
 
@@ -96,8 +94,6 @@ public class AddMantisUserTest {
         asert.assertTrue(password.isEnabled());
         asert.assertTrue(verifyPassword.isEnabled());
         asert.assertTrue(accessLevel.isEnabled());
-        asert.assertTrue(enabled.isEnabled());
-        asert.assertTrue(Protected.isEnabled());
 
         asert.assertAll();
     }
@@ -125,17 +121,17 @@ public class AddMantisUserTest {
     private void logout()
     {
         driver.findElement(By.className("user-info")).click();
-        driver.findElement(By.xpath("//*[@id=\"navbar-container\"]/div[2]/ul/li[3]/ul/li[4]/a")).click();
+        driver.findElement(By.xpath("//a[contains(., 'Logout')]")).click();
     }
 
     @Test(priority = 9)
     public void loginMewAccount()
     {
         driver.findElement(By.id("username")).sendKeys(username);
-        driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[2]")).click();
+        driver.findElement(By.xpath("//input[@value='Login']")).click();
 
         driver.findElement((By.id("password"))).sendKeys(password);
-        driver.findElement(By.xpath("//*[@id=\"login-form\"]/fieldset/input[3]")).click();
+        driver.findElement(By.xpath("//input[@value='Login']")).click();
 
     }
 
