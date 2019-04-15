@@ -11,9 +11,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-/* TODO
-        3. Локаторы автосгенерированные
- */
 public class AddMantisUserTest {
     private WebDriver driver;
     private WebElement createNewAccountBtn;
