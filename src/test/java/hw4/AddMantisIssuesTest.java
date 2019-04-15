@@ -1,7 +1,6 @@
 package hw4;
 
 import hw4.properties.Filter;
-import hw4.properties.Project;
 import hw4.properties.User;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.openqa.selenium.WebDriver;
