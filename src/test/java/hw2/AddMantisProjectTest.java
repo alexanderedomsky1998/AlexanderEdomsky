@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 
-// TODO Смотри комментарии к классу AddMantisUserTest.class
 public class AddMantisProjectTest {
 
     private WebDriver driver;
