@@ -9,7 +9,6 @@ import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 
-// TODO Смотри комментарии к классу AddMantisUserTest.class
 public class AddMantisProjectTest {
 
     private WebDriver driver;
@@ -64,10 +63,10 @@ public class AddMantisProjectTest {
     @Test(priority = 4)
     public void testManageButton()
     {
-        WebElement manageButton = driver.findElement(By.xpath("//span[contains(.,'Manage')]"));
+        WebElement manageButton = driver.findElement(By.linkText("Manage"));
         manageButton.click();
 
-        manageProjectsButton = driver.findElement(By.xpath("//*[@id=\"main-container\"]/div[2]/div[2]/div/ul/li[3]/a"));
+        manageProjectsButton = driver.findElement(By.linkText("Manage Projects"));
 
         assertTrue(manageProjectsButton.isEnabled());
 
@@ -78,14 +77,14 @@ public class AddMantisProjectTest {
     {
         manageProjectsButton.click();
 
-        WebElement createNewProjectButton = driver.findElement(By.xpath("//*[@id=\"main-container\"]/div[2]/div[2]/div/div/div[2]/div[2]/div/div[1]/form/fieldset/button\n"));
+        WebElement createNewProjectButton = driver.findElement(By.xpath("//fieldset/button"));
         createNewProjectButton.click();
 
-        WebElement projectName = driver.findElement(By.xpath("//*[@id=\"manage-project-create-form\"]/div/div[2]/div/div/table/tbody/tr[1]/td[1]"));
-        WebElement status = driver.findElement(By.xpath("//*[@id=\"manage-project-create-form\"]/div/div[2]/div/div/table/tbody/tr[2]/td[1]"));
-        WebElement inhetitGlobalCategories = driver.findElement(By.xpath("//*[@id=\"manage-project-create-form\"]/div/div[2]/div/div/table/tbody/tr[3]/td[1]"));
-        WebElement viewStatus = driver.findElement(By.xpath("//*[@id=\"manage-project-create-form\"]/div/div[2]/div/div/table/tbody/tr[4]/td[1]"));
-        WebElement description = driver.findElement(By.xpath("//*[@id=\"manage-project-create-form\"]/div/div[2]/div/div/table/tbody/tr[5]/td[1]"));
+        WebElement projectName = driver.findElement(By.id("project-name"));
+        WebElement status = driver.findElement(By.id("project-status"));
+        WebElement inhetitGlobalCategories = driver.findElement(By.id("project-inherit-global"));
+        WebElement viewStatus = driver.findElement(By.id("project-view-state"));
+        WebElement description = driver.findElement(By.id("project-description"));
 
         SoftAssert asert = new SoftAssert();
 
@@ -106,7 +105,7 @@ public class AddMantisProjectTest {
         WebElement projectStatus = driver.findElement(By.id("project-status"));
         projectStatus.sendKeys("release");
 
-        WebElement inhetitGlobalCategories = driver.findElement(By.xpath("//span[@class='lbl']"));
+        WebElement inhetitGlobalCategories = driver.findElement(By.id("project-inherit-global"));
         inhetitGlobalCategories.click();
 
         WebElement viewStatus = driver.findElement(By.id("project-view-state"));
@@ -115,7 +114,7 @@ public class AddMantisProjectTest {
         WebElement projectDescription = driver.findElement(By.id("project-description"));
         projectDescription.sendKeys("Project description");
 
-        WebElement addProjectBtn = driver.findElement(By.xpath("//*[@id=\"manage-project-create-form\"]/div/div[3]/input"));
+        WebElement addProjectBtn = driver.findElement(By.xpath("//input[@value='Add Project']"));
         addProjectBtn.click();
     }
 
@@ -123,7 +122,7 @@ public class AddMantisProjectTest {
     public void logout()
     {
         driver.findElement(By.className("user-info")).click();
-        driver.findElement(By.xpath("//*[@id=\"navbar-container\"]/div[2]/ul/li[3]/ul/li[4]/a")).click();
+        driver.findElement(By.xpath("//a[contains(., 'Logout')]")).click();
     }
 
     @AfterClass
