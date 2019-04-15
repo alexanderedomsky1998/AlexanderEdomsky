@@ -81,7 +81,7 @@
                     <version>2.18.1</version>
                     <configuration>
                         <suiteXmlFiles>
-                            ${project.basedir}/src/test/resources/pageObject.xml
+                            ${project.basedir}/src/test/resources/Lab4.xml
                         </suiteXmlFiles>
                         <threadCount>1</threadCount>
                     </configuration>

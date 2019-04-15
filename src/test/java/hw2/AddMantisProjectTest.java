@@ -52,7 +52,7 @@ public class AddMantisProjectTest {
 
 
     @Test(priority = 3)
-    public void AssertLeftSideMenu()
+    public void assertLeftSideMenu()
     {
 
         assertTrue(driver.findElement(By.id("sidebar")).isEnabled());
