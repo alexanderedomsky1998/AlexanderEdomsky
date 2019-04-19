@@ -2,6 +2,7 @@ package hw4;
 
 import org.openqa.selenium.WebDriver;
 
+// TODO А что собственно класс делает?
 public class PageObjects {
     public LoginPage loginPage;
     public CreateProjectPage createProjectPage;

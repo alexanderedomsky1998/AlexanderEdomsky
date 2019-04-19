@@ -18,11 +18,13 @@ public class AddMantisProjectTest {
     private WebDriver driver;
     private PageObjects pageObjects;
 
+    // TODO Может быть вынесенов общий класс
     @BeforeSuite(alwaysRun = true)
     public void setUp() {
         ChromeDriverManager.chromedriver().setup();
     }
 
+    // TODO Может быть вынесенов общий класс
     @BeforeMethod(alwaysRun = true)
     public void initDriver() {
         driver = new ChromeDriver();
@@ -67,6 +69,7 @@ public class AddMantisProjectTest {
         pageObjects.logoutPage.logout();
     }
 
+    // TODO Может быть вынесенов общий класс
     @AfterMethod(alwaysRun = true)
     public void tearDownDriver() {
         // Close driver

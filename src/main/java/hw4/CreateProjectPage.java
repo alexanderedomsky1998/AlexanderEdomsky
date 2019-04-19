@@ -30,6 +30,7 @@ public class CreateProjectPage extends AbstractBasePage {
         super(driver);
     }
 
+    // TODO Java Code Convention
     public void addProjectInfo(Project project)
     {
         projectNameField.sendKeys(project.getProjectName());

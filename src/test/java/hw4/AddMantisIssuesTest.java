@@ -17,11 +17,13 @@ public class AddMantisIssuesTest {
     private WebDriver driver;
     private PageObjects pageObjects;
 
+    // TODO Может быть вынесенов общий класс
     @BeforeSuite(alwaysRun = true)
     public void setUp() {
         ChromeDriverManager.chromedriver().setup();
     }
 
+    // TODO Может быть вынесенов общий класс
     @BeforeMethod(alwaysRun = true)
     public void initDriver() {
         driver = new ChromeDriver();
@@ -45,9 +47,11 @@ public class AddMantisIssuesTest {
         pageObjects.loginPage.login(user);
 
         //check leftsidebar
+        // TODO А зачем обращение к basePage
         assertTrue(pageObjects.basePage.leftSideBarExists());
 
         //click view issues button
+        // TODO А зачем обращение к basePage
         pageObjects.basePage.moveToViewIssuesPage();
 
         //set filter info
@@ -65,6 +69,7 @@ public class AddMantisIssuesTest {
     }
 
 
+    // TODO Может быть вынесенов общий класс
     @AfterMethod(alwaysRun = true)
     public void tearDownDriver() {
         // Close driver
