@@ -9,13 +9,11 @@ public class ManagePage extends AbstractBasePage {
     @FindBy(linkText = "Manage Projects")
     WebElement manageProjectsButton;
 
-    public ManagePage(WebDriver driver)
-    {
+    public ManagePage(WebDriver driver) {
         super(driver);
     }
 
-    public void moveToManageProjectsPage()
-    {
+    public void moveToManageProjectsPage() {
         manageProjectsButton.click();
     }
 }

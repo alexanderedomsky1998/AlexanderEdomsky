@@ -29,6 +29,7 @@ public class AddMantisIssuesTest {
 
         // Open Mantis
         driver.get("https://mantis.tiulp.in/login_page.php");
+       // driver.get("http://khda91.fvds.ru/mantisbt/");
 
         pageObjects = new PageObjects(driver);
     }
@@ -36,7 +37,7 @@ public class AddMantisIssuesTest {
     @Test
     public void addProject()
     {
-        User user = new User("administrator", "rootroot");
+        User user = new User("administrator", "root");
         Filter filter = new Filter("5", "5", "6", "2019", "March","27", "2019", "April", "1" );
         //check title
         assertEquals(pageObjects.loginPage.getTitle(), "MantisBT");

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="MantisbtAPITestSuite" verbose="1">
+
+    <test name="User Test">
+        <classes>
+            <class name="hw5.UserWithAPITest"/>
+        </classes>
+    </test>
+
+    <test name="Project Test">
+        <classes>
+            <class name="hw5.ProjectWithAPITest"/>
+        </classes>
+    </test>
+
+    <test name="Issues Test">
+        <classes>
+            <class name="hw5.IssuesWithAPITest"/>
+        </classes>
+    </test>
+
+</suite>

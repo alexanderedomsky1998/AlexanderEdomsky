@@ -17,8 +17,7 @@ public class LoginPage extends AbstractBasePage {
     @FindBy(xpath = "//input[@value='Login']")
     private WebElement loginButton;
 
-    public LoginPage(WebDriver driver)
-    {
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
 
@@ -29,8 +28,7 @@ public class LoginPage extends AbstractBasePage {
         loginButton.click();
     }
 
-    public String getTitle()
-    {
+    public String getTitle() {
         return driver.getTitle();
     }
 }

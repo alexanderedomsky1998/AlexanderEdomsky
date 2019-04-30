@@ -45,77 +45,69 @@ public class ViewIssuesPage extends AbstractBasePage {
     @FindBy(className = "badge")
     WebElement issueCount;
 
-    public ViewIssuesPage(WebDriver driver)
-    {
+    public ViewIssuesPage(WebDriver driver) {
         super(driver);
     }
 
     WebElement someBtn;
 
-    protected void selectMenu(String id, String option){
+    protected void selectMenu(String id, String option) {
         driver.findElement(By.id(id)).click();
         new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='" + id + "']/select/option[" + option + "]"))).click();
     }
 
-    private void setPriority(String priorityNumber)
-    {
+    private void setPriority(String priorityNumber) {
         priority.click();
         selectMenu("show_priority_filter_target", priorityNumber);
     }
 
-    private void setSeverity(String severityNumber)
-    {
+    private void setSeverity(String severityNumber) {
         severity.click();
         selectMenu("show_severity_filter_target", severityNumber);
     }
 
-    private void setStatus(String statusNumber)
-    {
+    private void setStatus(String statusNumber) {
         status.click();
         selectMenu("show_status_filter_target", statusNumber);
     }
 
-    private void setStartYear(String startYear)
-    {
+    private void setStartYear(String startYear) {
         this.startYear.click();
         Select select = new Select(this.startYear);
         select.selectByVisibleText(startYear);
     }
 
-    private void setStartMonth(String startMonth)
-    {
+    private void setStartMonth(String startMonth) {
         this.startMonth.click();
         Select select = new Select(this.startMonth);
         select.selectByVisibleText("March");
     }
-    private void setStartDay(String startDay)
-    {
+
+    private void setStartDay(String startDay) {
         this.startDay.click();
         Select select = new Select(this.startDay);
         select.selectByVisibleText(startDay);
     }
 
-    private void setEndYear(String endYear)
-    {
+    private void setEndYear(String endYear) {
         this.endYear.click();
         Select select = new Select(this.endYear);
         select.selectByVisibleText(endYear);
     }
 
-    private void setEndMonth(String endMonth)
-    {
+    private void setEndMonth(String endMonth) {
         this.endMonth.click();
         Select select = new Select(this.endMonth);
         select.selectByVisibleText("April");
     }
-    private void setEndDay(String endDay)
-    {
+
+    private void setEndDay(String endDay) {
         this.endDay.click();
         Select select = new Select(this.endDay);
         select.selectByVisibleText(endDay);
     }
-    public void setFilterValues(Filter filter)
-    {
+
+    public void setFilterValues(Filter filter) {
 
         setPriority(filter.getPriority());
         setSeverity(filter.getSeverity());
@@ -134,13 +126,11 @@ public class ViewIssuesPage extends AbstractBasePage {
         setEndDay(filter.getEndDay());
     }
 
-    public void applyFilter()
-    {
+    public void applyFilter() {
         applyFilter.click();
     }
 
-    public boolean isRecordExists()
-    {
+    public boolean isRecordExists() {
         return issueCount.getText() != "0 - 0 / 0" ? true : false;
     }
 }

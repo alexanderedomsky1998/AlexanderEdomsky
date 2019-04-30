@@ -25,23 +25,20 @@ public class CreateProjectPage extends AbstractBasePage {
     @FindBy(xpath = "//input[@value='Add Project']")
     WebElement addProjectButton;
 
-    public CreateProjectPage(WebDriver driver)
-    {
+    public CreateProjectPage(WebDriver driver) {
         super(driver);
     }
 
-    public void addProjectInfo(Project project)
-    {
+    public void addProjectInfo(Project project) {
         projectNameField.sendKeys(project.getProjectName());
         projectStatusField.sendKeys(project.getProjectStatus());
-        if(project.getInheritGlobalCategories())
+        if (project.getInheritGlobalCategories())
             projectInheritGlobalField.click();
         projectViewStateField.sendKeys(project.getViewStatus());
         projectDescriptionField.sendKeys(project.getDescription());
     }
 
-    public void addProject()
-    {
+    public void addProject() {
         addProjectButton.click();
     }
 }

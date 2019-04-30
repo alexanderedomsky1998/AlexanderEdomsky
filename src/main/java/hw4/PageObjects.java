@@ -11,8 +11,7 @@ public class PageObjects {
     public LogoutPage logoutPage;
     public ViewIssuesPage viewIssuesPage;
 
-    public PageObjects(WebDriver driver)
-    {
+    public PageObjects(WebDriver driver) {
         loginPage = new LoginPage(driver);
         createProjectPage = new CreateProjectPage(driver);
         managePage = new ManagePage(driver);

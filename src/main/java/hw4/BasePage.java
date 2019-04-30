@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class BasePage extends AbstractBasePage{
+public class BasePage extends AbstractBasePage {
 
     @FindBy(linkText = "Manage")
     WebElement manageButton;
@@ -15,20 +15,19 @@ public class BasePage extends AbstractBasePage{
     @FindBy(id = "sidebar")
     WebElement leftSideBar;
 
-    public BasePage(WebDriver driver)
-    {
+    public BasePage(WebDriver driver) {
         super(driver);
     }
 
-    public void moveToManagePage()
-    {
+    public void moveToManagePage() {
         manageButton.click();
     }
 
-    public void moveToViewIssuesPage(){viewIssuesButton.click();}
+    public void moveToViewIssuesPage() {
+        viewIssuesButton.click();
+    }
 
-    public boolean leftSideBarExists()
-    {
+    public boolean leftSideBarExists() {
         return leftSideBar.isEnabled();
     }
 }

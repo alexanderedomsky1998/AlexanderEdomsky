@@ -31,13 +31,14 @@ public class AddMantisProjectTest {
         // Open Mantis
         driver.get("https://mantis.tiulp.in/login_page.php");
 
+
         pageObjects = new PageObjects(driver);
     }
 
     @Test
     public void addProject()
     {
-        User user = new User("administrator", "rootroot");
+        User user = new User("administrator", "root");
         Project project = new Project("AlexanderEdomsky", "release", true, "public", "Project description");
         //check title
         assertEquals(pageObjects.loginPage.getTitle(), "MantisBT");
